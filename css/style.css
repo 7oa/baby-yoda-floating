@@ -1,0 +1,319 @@
+* {
+  padding: 0;
+  margin: 0;
+}
+
+html,
+body {
+  width: 100%;
+  height: 100%;
+}
+
+.page {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+.page-content {
+  -webkit-box-flex: 1;
+      -ms-flex-positive: 1;
+          flex-grow: 1;
+}
+
+.baby-yoda {
+  width: 200px;
+  height: 200px;
+  background-image: url("/img/baby-yoda.png");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: contain;
+  position: absolute;
+  bottom: 150px;
+  left: 10%;
+  display: none;
+}
+
+.baby-yoda.show {
+  display: block;
+  -webkit-animation: show 2s ease-in-out;
+          animation: show 2s ease-in-out;
+}
+
+.baby-yoda.float {
+  -webkit-animation-name: floating;
+          animation-name: floating;
+  -webkit-animation-iteration-count: infinite;
+          animation-iteration-count: infinite;
+  -webkit-animation-duration: 2s;
+          animation-duration: 2s;
+  -webkit-animation-direction: alternate;
+          animation-direction: alternate;
+}
+
+.baby-yoda-shadow {
+  width: 120px;
+  height: 20px;
+  border-radius: 50%;
+  background-color: rgba(0, 0, 0, 0.4);
+  position: absolute;
+  left: calc(10% + 40px);
+  bottom: 30%;
+  display: none;
+}
+
+.baby-yoda-shadow.show {
+  display: block;
+  -webkit-animation: show-shadow 2s ease-in-out;
+          animation: show-shadow 2s ease-in-out;
+}
+
+.baby-yoda-shadow.float {
+  -webkit-animation-name: floating-shadow;
+          animation-name: floating-shadow;
+  -webkit-animation-iteration-count: infinite;
+          animation-iteration-count: infinite;
+  -webkit-animation-duration: 2s;
+          animation-duration: 2s;
+  -webkit-animation-direction: alternate;
+          animation-direction: alternate;
+}
+
+.landscape {
+  position: absolute;
+  top: 0;
+  right: 0;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  overflow-x: hidden;
+}
+
+.sky {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  background-color: #aad9eb;
+  -webkit-box-flex: 1;
+      -ms-flex-positive: 1;
+          flex-grow: 1;
+  background-image: url("/img/layers/sky.png");
+  background-size: cover;
+  background-position: center top;
+}
+
+.ground {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  background-color: transparent;
+  width: 100%;
+  height: 90px;
+  background-image: url("/img/layers/ground.png");
+  background-position: left bottom;
+  background-repeat: repeat-x;
+  background-size: 1150px 115px;
+}
+
+.ground.animate {
+  -webkit-animation-name: ground-move;
+          animation-name: ground-move;
+  -webkit-animation-iteration-count: infinite;
+          animation-iteration-count: infinite;
+  -webkit-animation-timing-function: linear;
+          animation-timing-function: linear;
+  -webkit-animation-duration: 10s;
+          animation-duration: 10s;
+}
+
+.clouds {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100vw;
+  height: 100%;
+  background-repeat: repeat-x;
+  background-size: 100vw 100%;
+}
+
+.clouds_layer1 {
+  background-image: url("/img/layers/clouds_1.png");
+  -webkit-animation-duration: 240s;
+          animation-duration: 240s;
+}
+
+.clouds_layer2 {
+  background-image: url("/img/layers/clouds_2.png");
+  -webkit-animation-duration: 120s;
+          animation-duration: 120s;
+}
+
+.clouds_layer3 {
+  background-image: url("/img/layers/clouds_3.png");
+  -webkit-animation-duration: 80s;
+          animation-duration: 80s;
+}
+
+.clouds_layer4 {
+  background-image: url("/img/layers/clouds_4.png");
+  -webkit-animation-duration: 60s;
+          animation-duration: 60s;
+}
+
+.clouds.animate {
+  -webkit-animation-name: clouds-move;
+          animation-name: clouds-move;
+  -webkit-animation-iteration-count: infinite;
+          animation-iteration-count: infinite;
+  -webkit-animation-timing-function: linear;
+          animation-timing-function: linear;
+}
+
+@-webkit-keyframes floating {
+  from {
+    -webkit-transform: translateY(0px);
+            transform: translateY(0px);
+  }
+  to {
+    -webkit-transform: translateY(15px);
+            transform: translateY(15px);
+  }
+}
+
+@keyframes floating {
+  from {
+    -webkit-transform: translateY(0px);
+            transform: translateY(0px);
+  }
+  to {
+    -webkit-transform: translateY(15px);
+            transform: translateY(15px);
+  }
+}
+
+@-webkit-keyframes floating-shadow {
+  from {
+    -webkit-transform: scale(1);
+            transform: scale(1);
+  }
+  to {
+    -webkit-transform: scale(1.2);
+            transform: scale(1.2);
+  }
+}
+
+@keyframes floating-shadow {
+  from {
+    -webkit-transform: scale(1);
+            transform: scale(1);
+  }
+  to {
+    -webkit-transform: scale(1.2);
+            transform: scale(1.2);
+  }
+}
+
+@-webkit-keyframes start-move {
+  to {
+    -webkit-transform: translateX(10px);
+            transform: translateX(10px);
+  }
+}
+
+@keyframes start-move {
+  to {
+    -webkit-transform: translateX(10px);
+            transform: translateX(10px);
+  }
+}
+
+@-webkit-keyframes clouds-move {
+  to {
+    background-position-x: -100vw;
+  }
+}
+
+@keyframes clouds-move {
+  to {
+    background-position-x: -100vw;
+  }
+}
+
+@-webkit-keyframes ground-move {
+  to {
+    background-position-x: -1150px;
+  }
+}
+
+@keyframes ground-move {
+  to {
+    background-position-x: -1150px;
+  }
+}
+
+@-webkit-keyframes show {
+  0% {
+    left: -500px;
+  }
+  60% {
+    left: 15%;
+  }
+  100% {
+    left: 10%;
+  }
+}
+
+@keyframes show {
+  0% {
+    left: -500px;
+  }
+  60% {
+    left: 15%;
+  }
+  100% {
+    left: 10%;
+  }
+}
+
+@-webkit-keyframes show-shadow {
+  0% {
+    left: -480px;
+  }
+  60% {
+    left: calc(15% + 40px);
+  }
+  100% {
+    left: calc(10% + 40px);
+  }
+}
+
+@keyframes show-shadow {
+  0% {
+    left: -480px;
+  }
+  60% {
+    left: calc(15% + 40px);
+  }
+  100% {
+    left: calc(10% + 40px);
+  }
+}
+/*# sourceMappingURL=style.css.map */
