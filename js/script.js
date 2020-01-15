@@ -1,28 +1,64 @@
 "use strict";
 
 (function() {
-  var SPACE_KEYCODE = 32;
+  const SPACE_KEYCODE = 32;
 
-  var clouds = document.querySelectorAll(".clouds");
-  var ground = document.querySelector(".ground");
-  var babyYoda = document.querySelector(".baby-yoda");
-  var babyYodaShadow = document.querySelector(".baby-yoda-shadow");
-  var helpText = document.querySelector(".help-text");
+  const ground = document.querySelector(".ground");
+  const babyYoda = document.querySelector(".baby-yoda");
+  const babyYodaShadow = document.querySelector(".baby-yoda-shadow");
+  const helpText = document.querySelector(".help-text");
+  const sky = document.querySelector(".sky");
 
-  document.addEventListener("keydown", function(evt) {
+  const audio = new Audio("../music/bbyoda2.mp3");
+  const playAudio = () => audio.play();
+  const pauseAudio = () => audio.pause();
+  let pause = true;
+  let spacePressOnce = false;
+
+  const moveYoda = () => {
+    ground.classList.add("animate");
+    babyYoda.classList.add("float");
+    babyYodaShadow.classList.add("float");
+    helpText.classList.remove("show");
+  };
+
+  const togglePause = () => {
+    ground.classList.toggle("pause");
+    babyYoda.classList.toggle("pause");
+    babyYodaShadow.classList.toggle("pause");
+  };
+
+  document.addEventListener("keydown", evt => {
     if (evt.keyCode === SPACE_KEYCODE) {
-      ground.classList.add("animate");
-      babyYoda.classList.add("float");
-      babyYodaShadow.classList.add("float");
-      helpText.classList.remove("show");
+      pause = !pause;
+
+      if (pause) {
+        pauseAudio();
+      } else {
+        playAudio();
+        moveYoda();
+      }
+      spacePressOnce && togglePause();
+      spacePressOnce = true;
     }
   });
 
-  window.addEventListener("load", function() {
+  const pageLoadHandler = () => {
     babyYoda.classList.add("show");
     babyYodaShadow.classList.add("show");
-    setTimeout(function() {
-      helpText.classList.add("show");
-    }, 1000);
-  });
+    setTimeout(() => helpText.classList.add("show"), 1000);
+  };
+
+  window.addEventListener("load", pageLoadHandler);
+
+  const generateRandomInteger = max => Math.floor(Math.random() * max);
+
+  const changeSkyColor = () => {
+    const randomRed = generateRandomInteger(255);
+    const randomGreen = generateRandomInteger(255);
+    const randomBlue = generateRandomInteger(255);
+    sky.style.backgroundColor = `rgb(${randomRed}, ${randomGreen}, ${randomBlue})`;
+  };
+
+  setInterval(changeSkyColor, 20000);
 })();
