@@ -9,7 +9,7 @@
   const helpText = document.querySelector(".help-text");
   const sky = document.querySelector(".sky");
 
-  const audio = new Audio("../music/bbyoda2.mp3");
+  const audio = new Audio("music/bbyoda2.mp3");
   const playAudio = () => audio.play();
   const pauseAudio = () => audio.pause();
   let pause = true;
